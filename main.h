@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <cmath> //linux Á´½ÓÊ±Ä¬ÈÏ²»×°ÔØmath¿â ·½·¨£ºg++ -lm main.cpp
+#include <cmath> //linux é“¾æ¥æ—¶é»˜è®¤ä¸è£…è½½mathåº“ æ–¹æ³•ï¼šg++ -lm main.cpp
 
 
-void PrintWelcomeInfo();
-unsigned int GetInteger();
-void Swap(int a, int b);
-int Add(int a, int b);
-int Compare(int a, int b);
-bool IsLeep(int year);
+//void PrintWelcomeInfo();
+//unsigned int GetInteger();
+//void Swap(int a, int b);
+//int Add(int a, int b);
+//int Compare(int a, int b);
+//bool IsLeep(int year);
