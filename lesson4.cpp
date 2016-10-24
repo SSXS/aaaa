@@ -160,4 +160,5 @@ unsigned int GetMaxFactor(unsigned int n)
 			return t;
 		t--;
 	}
+    return 0;
 }

@@ -2,3 +2,6 @@
 Debug/
 *.vcxproj
 *.vcxproj.*
+*.xcodeporj/
+Linux_C++.xcodeproj
+.DS_Store
