@@ -15,13 +15,15 @@
 //}
 
 #include "main.h"
-#include "lesson1.h"
+//#include "lesson1.h"
+#include "lesson2.h"
 
 using namespace std;
 
 int main()
 {
     //lesson1Main();
+    lesson2Main();
     
     //int a, b;
     //a = GetInteger();
