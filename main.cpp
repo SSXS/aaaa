@@ -16,14 +16,16 @@
 
 #include "main.h"
 //#include "lesson1.h"
-#include "lesson2.h"
+//#include "lesson2.h"
+#include "lesson3.h"
 
 using namespace std;
 
 int main()
 {
-    //lesson1Main();
-    lesson2Main();
+//    lesson1Main();
+//    lesson2Main();
+    lesson3Main();
     
     //int a, b;
     //a = GetInteger();
