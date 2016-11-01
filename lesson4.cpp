@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-
+#include <cstdlib>
 #include "lesson4.h"
 
 using namespace std;
@@ -22,21 +22,21 @@ int lesson4Main()
 //    n = GetPlateNumber();
 //    MoveHanoi(n, X, Y, Z);
 
-//    unsigned int n;
-//    record = 0;
-//    cout << "Input a non-negative number: ";
-//    cin >> n;
-//    cout << n << "=";
-//    resolve(n);
-//    cout << endl;
-    
-    unsigned int n, r;
-    cout << "Input non-negative number n: ";
+    unsigned int n;
+    record = 0;
+    cout << "Input a non-negative number: ";
     cin >> n;
-    cout << "Input non-negative number r: ";
-    cin >> r;
-    unsigned int binomialFactor = GetBinomialFactor(n, r);
-    cout << n << " and " << r << " binomial factor is " << binomialFactor << endl;
+    cout << n << "=";
+    resolve(n);
+    cout << endl;
+    
+//    unsigned int n, r;
+//    cout << "Input non-negative number n: ";
+//    cin >> n;
+//    cout << "Input non-negative number r: ";
+//    cin >> r;
+//    unsigned int binomialFactor = GetBinomialFactor(n, r);
+//    cout << n << " and " << r << " binomial factor is " << binomialFactor << endl;
     
     return 0;
 }
@@ -89,7 +89,7 @@ void MovePlate(unsigned int n, HANOI from, HANOI to)
 	cout << n << ": " << fc << " --> " << tc << endl;
 }
 
-
+const int failed_in_testing_primality = 1;
 bool IsPrime_4(unsigned int n)
 {
 //	unsigned int i = 2;
@@ -102,7 +102,15 @@ bool IsPrime_4(unsigned int n)
 //	return true;
     
 	unsigned int i = 3, t = (unsigned int)sqrt(n) + 1; //float -> unsigned int 完全平方数的的平方根舍去小数部分时产生的误差
-	if (n % 2 == 0)
+	if (n <= 1)
+    {
+        cout << "IsPrime: Failed in testing the primality of " << n << endl;
+        exit(failed_in_testing_primality);
+        
+    }
+    if (n == 2)
+        return true;
+    if (n % 2 == 0)
 		return false;
 
 	while (i <= t)
@@ -182,7 +190,7 @@ unsigned int GetFibonacci(unsigned int n)
 
 void resolve(unsigned int n)
 {
-    if (IsPrime_4(n) || n == 2)
+    if (IsPrime_4(n))
     {
         if (record == 0)
         {
