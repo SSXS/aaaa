@@ -1,14 +1,61 @@
+#include <iostream>
+#include <cmath>
+
 #include "lesson4.h"
 
 using namespace std;
 
-//enum HANOI _HANOI;
+int record = 0;
 
-int aaa = 100;
+int lesson4Main()
+{
+//    unsigned int n;
+//    cout << "Put a number: ";
+//    cin >> n;
+//    if (IsPrime_4(n))
+//        cout << n << " is a prime." << endl;
+//    else
+//        cout << n << " is not a prime." << endl;
+    
+//    unsigned int n;
+//    PrintHanoiInfo();
+//    n = GetPlateNumber();
+//    MoveHanoi(n, X, Y, Z);
+
+//    unsigned int n;
+//    record = 0;
+//    cout << "Input a non-negative number: ";
+//    cin >> n;
+//    cout << n << "=";
+//    resolve(n);
+//    cout << endl;
+    
+    unsigned int n, r;
+    cout << "Input non-negative number n: ";
+    cin >> n;
+    cout << "Input non-negative number r: ";
+    cin >> r;
+    unsigned int binomialFactor = GetBinomialFactor(n, r);
+    cout << n << " and " << r << " binomial factor is " << binomialFactor << endl;
+    
+    return 0;
+}
 
 void PrintHanoiInfo()
 {
 	cout << "This program shows the moving process of Hanoi Tower\n";
+}
+
+void MoveHanoi(unsigned int n, HANOI from, HANOI temp, HANOI to)
+{
+    if (n == 1)
+        MovePlate(n, from, to);
+    else
+    {
+        MoveHanoi(n - 1, from, to, temp);
+        MovePlate(n, from, to);
+        MoveHanoi(n - 1, temp, from, to);
+    }
 }
 
 char ConvertHanoiToChar(HANOI x)
@@ -42,30 +89,19 @@ void MovePlate(unsigned int n, HANOI from, HANOI to)
 	cout << n << ": " << fc << " --> " << tc << endl;
 }
 
-void MoveHanoi(unsigned int n, HANOI from, HANOI temp, HANOI to)
-{
-	if (n == 1)
-		MovePlate(n, from, to);
-	else
-	{
-		MoveHanoi(n - 1, from, to, temp);
-		MovePlate(n, from, to);
-		MoveHanoi(n - 1, temp, from, to);
-	}
-}
 
-bool IsPrime(unsigned int n)
+bool IsPrime_4(unsigned int n)
 {
-	//unsigned int i = 2;
-	//while (i < n)
-	//{
-	//	if (n % i == 0)
-	//		return false;
-	//	i++;
-	//}
-	//return true;
-
-	unsigned int i = 3, t = (unsigned int)sqrt(n) + 1;
+//	unsigned int i = 2;
+//	while (i < n)
+//	{
+//		if (n % i == 0)
+//			return false;
+//		i++;
+//	}
+//	return true;
+    
+	unsigned int i = 3, t = (unsigned int)sqrt(n) + 1; //float -> unsigned int å®Œå…¨å¹³æ–¹æ•°çš„çš„å¹³æ–¹æ ¹èˆå»å°æ•°éƒ¨åˆ†æ—¶äº§ç”Ÿçš„è¯¯å·®
 	if (n % 2 == 0)
 		return false;
 
@@ -80,16 +116,15 @@ bool IsPrime(unsigned int n)
 
 unsigned int gcd(unsigned int x, unsigned int y)
 {
-	//Çî¾Ù·¨
+	//ç©·ä¸¾æ³•
 	//unsigned int n = x < y ? x : y;
 	//
 	//while (x % n != 0 || y % n != 0)
 	//	n--;
 	//return n;
 
-	//Å·Ê½Ëã·¨
+	//æ¬§å‡ é‡Œå¾·ç®—æ³•
 	unsigned int n;
-
 	while (true)
 	{
 		n = x % y;
@@ -100,24 +135,26 @@ unsigned int gcd(unsigned int x, unsigned int y)
 	}
 }
 
+//é˜¶ä¹˜å‡½æ•°
 unsigned int GetFactorial(unsigned int n)
 {
-	//Ñ­»·Çó½×³Ë
+	//å¾ªç¯å®ç°
 	//unsigned int result = 1;
 	//for (unsigned int i = 1; i <= n; i++)
 	//	result *= i;
 	//return result;
 
-	//µİ¹éÇó½×³Ë
+	//é€’å½’å®ç°
 	if (n == 1)
 		return 1;
 	else
 		return n * GetFactorial(n - 1);
 }
 
+//æ–æ³¢é‚£å¥‘æ•°åˆ—å‡½æ•°
 unsigned int GetFibonacci(unsigned int n)
 {
-	//Ñ­»·Çóì³²¨ÄÇÆõÊıÁĞ
+	//å¾ªç¯å®ç°
 	//unsigned int t1, t2;
 	//unsigned int result;
 
@@ -133,7 +170,7 @@ unsigned int GetFibonacci(unsigned int n)
 	//}
 	//return result;
 
-	//µİ¹éÇóì³²¨ÄÇÆõÊıÁĞ
+	//é€’å½’å®ç°
 	if (n == 1 || n == 2)
 		return 1;
 	else
@@ -141,24 +178,81 @@ unsigned int GetFibonacci(unsigned int n)
 }
 
 //---------------------Programming Practice---------------------
-//Éè¼ÆËã·¨£¬½«Ä³¸ö´óÓÚ1µÄ×ÔÈ»Êın·Ö½âÎªÆäËØÒò×ÓµÄ³Ë»ı£¬Èç6=2*3£¬ 7=7£¬8=2*2*2¡£
-void RecountNumber(unsigned int n)
-{
+//å°†æŸä¸ªå¤§äº1çš„è‡ªç„¶æ•°nåˆ†è§£ä¸ºå…¶ç´ å› å­çš„ä¹˜ç§¯ï¼Œå¦‚6=2*3ï¼Œ7=7ï¼Œ8=2*2*2
 
+void resolve(unsigned int n)
+{
+    if (IsPrime_4(n) || n == 2)
+    {
+        if (record == 0)
+        {
+            cout << n;
+            record = 1;
+        }
+        else
+            cout << "*" << n;
+    }
+    else
+    {
+        unsigned int n1 = GetFactor(n);
+        unsigned int n2 = n / n1;
+        resolve(n1);
+        resolve(n2);
+    }
 }
 
-unsigned int GetMaxFactor(unsigned int n)
+unsigned int GetFactor(unsigned int n)
 {
-	bool isPrime = IsPrime(n);
-	if (isPrime)
-		return n;
-	
-	unsigned int t = (unsigned int)sqrt(n) + 1;
-	while (t > 1)
-	{
-		if (n % t == 0)
-			return t;
-		t--;
-	}
-    return 0;
+    unsigned int factor = n;
+    
+    unsigned int t = (unsigned int)sqrt(n) + 1;
+    unsigned int i = 2;
+    
+    while (i <= t)
+    {
+        if (n % i == 0)
+        {
+            factor = i;
+            break;
+        }
+        else
+            i++;
+    }
+    return factor;
 }
+
+//åˆ†åˆ«ä½¿ç”¨å¾ªç¯å’Œé€’å½’ä¸¤ç§ç­–ç•¥æ±‚äºŒé¡¹å¼ç³»æ•°C(n,k)ã€‚å…¶ä¸­ï¼Œnä¸ºè‡ªç„¶æ•°ï¼Œkä¸ºä¸å¤§äºnçš„éè´Ÿæ•´æ•°
+unsigned int GetBinomialFactor(unsigned int n, unsigned int k)
+{
+//    é€’å½’ç®—æ³•
+    unsigned int n1, n2;
+    if (n == k || k == 0)
+        return 1;
+    else
+    {
+        n1 = GetBinomialFactor(n - 1, k);
+        n2 = GetBinomialFactor(n - 1, k - 1);
+        return n1 + n2;
+    }
+    
+//    å¾ªç¯ç®—æ³•
+//    if (n == k || k == 0)
+//        return 1;
+//    
+//    unsigned int n1 = 1, n2 = 1, n3 = 1;
+//    for (int i = 1; i <= n; i++) {
+//        n1 *= i;
+//    }
+//    for (int j = 1; j <= k; j++) {
+//        n2 *= j;
+//    }
+//    for (int r = 1; r <= (n - k); r++) {
+//        n3 *= r;
+//    }
+//    return n1 / (n2 * n3);
+}
+
+
+
+
+

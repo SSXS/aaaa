@@ -17,7 +17,8 @@
 #include "main.h"
 //#include "lesson1.h"
 //#include "lesson2.h"
-#include "lesson3.h"
+//#include "lesson3.h"
+#include "lesson4.h"
 
 using namespace std;
 
@@ -25,26 +26,8 @@ int main()
 {
 //    lesson1Main();
 //    lesson2Main();
-    lesson3Main();
-    
-    //int a, b;
-    //a = GetInteger();
-    //b = GetInteger();
-    //Swap(a, b);
-    
-    //int sum = Add(a, b);
-    //cout << sum << endl;
-    //cout << sum << " is prime£∫" << IsPrime(sum) << endl;
-    //cout << a << " , " << b << " the gcd is " << gcd(a, b) << endl;
-    //cout << sum << " ,Factorial : " << GetFactorial(sum) << endl;
-    //cout << sum << " ,Fibonacci : " << GetFibonacci(sum) << endl;
-    
-    //PrintAAA();
-    
-//    unsigned int n;
-//    PrintHanoiInfo();
-//    n = GetPlateNumber();
-//    MoveHanoi(n, X, Y, Z);
+//    lesson3Main();
+    lesson4Main();
     
     return 0;
 }

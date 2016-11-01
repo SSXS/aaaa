@@ -1,8 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <cmath>
-
 typedef enum __HANOI {
 	X, Y, Z
 } HANOI;
@@ -19,7 +16,7 @@ typedef enum __HANOI {
 //	X, Y, Z
 //};
 
-extern int aaa;
+int lesson4Main();
 
 void PrintHanoiInfo();
 
@@ -29,7 +26,7 @@ unsigned int GetPlateNumber();
 void MovePlate(unsigned int n, HANOI from, HANOI to);
 void MoveHanoi(unsigned int n, HANOI from, HANOI temp, HANOI to);
 
-bool IsPrime(unsigned int n);
+bool IsPrime_4(unsigned int n);
 
 unsigned int gcd(unsigned int x, unsigned int y);
 
@@ -37,5 +34,7 @@ unsigned int GetFactorial(unsigned int n);
 unsigned int GetFibonacci(unsigned int n);
 
 //---------------------------Programming Practice----------------
-void RecountNumber(unsigned int n);
-unsigned int GetMaxFactor(unsigned int n);
+void resolve(unsigned int n);
+unsigned int GetFactor(unsigned int n);
+
+unsigned int GetBinomialFactor(unsigned int n, unsigned int k);
