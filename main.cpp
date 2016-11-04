@@ -19,6 +19,7 @@
 //#include "lesson2.h"
 //#include "lesson3.h"
 #include "lesson4.h"
+#include "lesson5/lesson5.h"
 
 using namespace std;
 
@@ -27,7 +28,8 @@ int main()
 //    lesson1Main();
 //    lesson2Main();
 //    lesson3Main();
-    lesson4Main();
+//    lesson4Main();
+    lesson5Main();
     
     return 0;
 }

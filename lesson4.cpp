@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int record = 0;
+static int record = 0;
 
 int lesson4Main()
 {
