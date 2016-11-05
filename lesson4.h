@@ -1,8 +1,8 @@
 #pragma once
 
-typedef enum __HANOI {
-	X, Y, Z
-} HANOI;
+//typedef enum __HANOI {
+//	X, Y, Z
+//} HANOI;
 
 //#ifdef __GLOBAL__
 //#define _EXT
@@ -15,6 +15,9 @@ typedef enum __HANOI {
 //enum HANOI {
 //	X, Y, Z
 //};
+enum HANOI { X, Y, Z};
+
+//struct AAA;
 
 int lesson4Main();
 
